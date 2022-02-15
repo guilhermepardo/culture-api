@@ -10,9 +10,9 @@ exports.guide = async (req, res) => {
     }
 }
 
-exports.list = async (req, res) => {
+exports.movieDetails = async (req, res) => {
     try {
-        const response = await service.list(req.params.language);
+        const response = await service.movieDetails(req.params.movieId, req.params.language);
         res.send(response)
     } catch (error) {
         throw error;
