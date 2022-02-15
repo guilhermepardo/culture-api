@@ -35,21 +35,38 @@ exports.list = async (language) => {
 exports.popular = async (language, region) => {
     try {
         let moviesList = [];
-        let genresList = [];
         const response = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=cf7258ddce5634737986dcc9aadd195d&page=1&region=${region}&language=${language}`);
         for (const item of response.data.results) {
-            for (const genre of item.genre_ids) {
+            let genresNames = [];
 
+            for (const genre of item.genre_ids) {
+                const genres = await axios(`https://api.themoviedb.org/3/genre/movie/list?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`)
+                
+                genresObject = genres.data.genres;
+
+                let genresInfos = genresObject.filter(function (x) {
+                    return x.id === genre
+                });
+
+                for (const genreInfo of genresInfos) {
+                    genresNames.push(genreInfo.name)
+                }
             }
+
+            const detailedInfo = await axios(`https://api.themoviedb.org/3/movie/${item.id}?api_key=cf7258ddce5634737986dcc9aadd195d&language=${language}`);
+
+            console.log("detailedInfo:>>", detailedInfo);
+
             let normalize = {
                 movieId: item.id,
                 title: item.title,
                 originalTitle: item.original_title,
                 overview: item.overview,
-                genres: item.genre_ids,
-                releaseDate: item.release_date
+                genres: genresNames,
+                releaseDate: item.release_date,
+                adult: item.adult,
+                imdbId: detailedInfo.data.imdb_id
             }
-            console.log(normalize);
             moviesList.push(normalize);
         }
         return moviesList;
