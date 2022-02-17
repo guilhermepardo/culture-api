@@ -1,5 +1,4 @@
 const service = require('./movies.service');
-const axios = require("axios");
 
 exports.guide = async (req, res) => {
     try {
