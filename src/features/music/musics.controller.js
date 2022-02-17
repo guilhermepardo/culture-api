@@ -1,8 +1,26 @@
 const service = require('./musics.service');
 
+exports.albumTracks = async (req, res) => {
+    try {
+        const response = await service.albumTracks(req.params.albumId);
+        res.send(response);
+    } catch (error) {
+        throw error;
+    }
+}
+
 exports.artistDetails = async (req, res) => {
     try {
         const response = await service.artistDetails(req.params.artistId);
+        res.send(response);
+    } catch (error) {
+        throw error;
+    }
+}
+
+exports.artistDiscography = async (req, res) => {
+    try {
+        const response = await service.artistDiscography(req.params.artistId);
         res.send(response);
     } catch (error) {
         throw error;
