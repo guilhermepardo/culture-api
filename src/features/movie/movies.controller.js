@@ -26,3 +26,21 @@ exports.trend = async (req, res) => {
         throw error;
     }
 }
+
+exports.now = async (req, res) => {
+    try {
+        const response = await service.now(req.params.language, req.params.region);
+        res.send(response)
+    } catch (error) {
+        throw error;
+    }
+}
+
+exports.next = async (req, res) => {
+    try {
+        const response = await service.next(req.params.language, req.params.region);
+        res.send(response)
+    } catch (error) {
+        throw error;
+    }
+}
