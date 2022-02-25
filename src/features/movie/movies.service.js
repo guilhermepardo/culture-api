@@ -14,18 +14,15 @@ exports.movieDetails = async (movieId, language) => {
 
         for (const productionCountry of detailedInfo.data.production_countries) {
             productionCountries.push({
-                countryPrefix: productionCountry.iso_3166_1,
-                countryName: productionCountry.name
+                country: productionCountry.iso_3166_1,
+                country: productionCountry.name
             })
         }
 
         let productionCompanies = [];
 
         for (const productionCompany of detailedInfo.data.production_companies) {
-            productionCompanies.push({
-                companyName: productionCompany.name,
-                companyCountry: productionCompany.origin_country
-            })
+            productionCompanies.push(productionCompany.name)
         }
 
         let normalize = {
