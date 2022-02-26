@@ -80,7 +80,7 @@ exports.popular = async (language, region) => {
                 productionCompanies.push(productionCompany.name)
             }
 
-            let normalize = {
+            moviesList.push({
                 movieId: item.id,
                 imdbId: detailedInfo.data.imdb_id,
                 title: item.title,
@@ -96,8 +96,7 @@ exports.popular = async (language, region) => {
                 productionCompanies,
                 budget: detailedInfo.data.budget,
                 revenue: detailedInfo.data.revenue
-            }
-            moviesList.push(normalize);
+            });
         }
         return moviesList;
     } catch (error) {
@@ -137,7 +136,7 @@ exports.trend = async (timeWindow, language) => {
                 productionCompanies.push(productionCompany.name)
             }
 
-            let normalize = {
+            moviesList.push({
                 movieId: item.id,
                 imdbId: detailedInfo.data.imdb_id,
                 title: item.title,
@@ -153,8 +152,7 @@ exports.trend = async (timeWindow, language) => {
                 productionCompanies,
                 budget: detailedInfo.data.budget,
                 revenue: detailedInfo.data.revenue
-            }
-            moviesList.push(normalize);
+            });
         }
         return moviesList;
     } catch (error) {
@@ -194,7 +192,7 @@ exports.now = async (language, region) => {
                 productionCompanies.push(productionCompany.name)
             }
 
-            let normalize = {
+            moviesList.push({
                 movieId: item.id,
                 imdbId: detailedInfo.data.imdb_id,
                 title: item.title,
@@ -210,8 +208,7 @@ exports.now = async (language, region) => {
                 productionCompanies,
                 budget: detailedInfo.data.budget,
                 revenue: detailedInfo.data.revenue
-            }
-            moviesList.push(normalize);
+            });
         }
         return moviesList;
     } catch (error) {
@@ -251,7 +248,7 @@ exports.next = async (language, region) => {
                 productionCompanies.push(productionCompany.name)
             }
 
-            let normalize = {
+            moviesList.push({
                 movieId: item.id,
                 imdbId: detailedInfo.data.imdb_id,
                 title: item.title,
@@ -267,8 +264,7 @@ exports.next = async (language, region) => {
                 productionCompanies,
                 budget: detailedInfo.data.budget,
                 revenue: detailedInfo.data.revenue
-            }
-            moviesList.push(normalize);
+            });
         }
         return moviesList;
     } catch (error) {

@@ -117,7 +117,7 @@ exports.artistDiscography = async (artistId) => {
             discography: albumsList.length > 0 ? albumsList : null
         }
 
-        return response;;
+        return response;
     } catch (error) {
         throw error;
     }
@@ -140,7 +140,7 @@ exports.popularTracks = async (chart, country) => {
                 }
             }
 
-            let normalize = {
+            tracks.push({
                 trackId: item.track.track_id,
                 commonTrackId: item.track.commontrack_id,
                 trackName: item.track.track_name,
@@ -149,8 +149,7 @@ exports.popularTracks = async (chart, country) => {
                 artistName: item.track.artist_name,
                 genres: genres.length > 0 ? genres : null,
                 hasLyrics: item.track.has_lyrics === 1 ? true : false
-            }
-            tracks.push(normalize)
+            })
         }
         return tracks;
     } catch (error) {
