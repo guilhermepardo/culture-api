@@ -6,51 +6,51 @@ exports.details = async (serieId, language) => {
 
         let creators = [];
 
-            for (const creator of response.data.created_by) {
-                creators.push(creator.name)
-            }
+        for (const creator of response.data.created_by) {
+            creators.push(creator.name)
+        }
 
-            let genres = [];
+        let genres = [];
 
-            for (const genre of response.data.genres) {
-                genres.push(genre.name)
-            }
+        for (const genre of response.data.genres) {
+            genres.push(genre.name)
+        }
 
-            let seasons = [];
+        let seasons = [];
 
-            for (const season of response.data.seasons) {
-                seasons.push({
-                    id: season.id,
-                    name: season.name,
-                    number: season.season_number,
-                    episodesCount: season.episode_count,
-                    premiereDate: season.air_date
-                })
-            }
+        for (const season of response.data.seasons) {
+            seasons.push({
+                id: season.id,
+                name: season.name,
+                number: season.season_number,
+                episodesCount: season.episode_count,
+                premiereDate: season.air_date
+            })
+        }
 
-            let networks = [];
+        let networks = [];
 
-            for (const network of response.data.networks) {
-                networks.push(network.name)
-            }
+        for (const network of response.data.networks) {
+            networks.push(network.name)
+        }
 
-            let productionCompanies = [];
+        let productionCompanies = [];
 
-            for (const productionCompany of response.data.production_companies) {
-                productionCompanies.push(productionCompany.name)
-            }
+        for (const productionCompany of response.data.production_companies) {
+            productionCompanies.push(productionCompany.name)
+        }
 
-            let productionCountries = [];
+        let productionCountries = [];
 
-            for (const productionCountry of response.data.production_countries) {
-                productionCountries.push(productionCountry.name)
-            }
+        for (const productionCountry of response.data.production_countries) {
+            productionCountries.push(productionCountry.name)
+        }
 
-            let spokenLanguages = [];
+        let spokenLanguages = [];
 
-            for (const spokenLanguage of response.data.spoken_languages) {
-                spokenLanguages.push(spokenLanguage.name)
-            }
+        for (const spokenLanguage of response.data.spoken_languages) {
+            spokenLanguages.push(spokenLanguage.name)
+        }
 
         let details = {
             serieId: response.data.id,
@@ -111,8 +111,8 @@ exports.seasonsDetails = async (serieId, language) => {
 
         for (const seasonNumber of seasonsCount) {
 
-            let seasonsDetails = await axios(`https://api.themoviedb.org/3/tv/${serieId}/season/${seasonNumber}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=pt-BR`)
-          
+            let seasonsDetails = await axios(`https://api.themoviedb.org/3/tv/${serieId}/season/${seasonNumber}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`)
+
             seasonsData.push(seasonsDetails.data)
         }
 
@@ -154,12 +154,62 @@ exports.seasonsDetails = async (serieId, language) => {
                 id: season.id,
                 name: season.name,
                 overview: season.overview != "" ? season.overview : null,
-                number: season.season_number, 
+                number: season.season_number,
                 premiereDate: season.air_date,
                 episodes
             })
         }
         return seasons;
+    } catch (error) {
+        throw error;
+    }
+}
+
+exports.seasonDetails = async (serieId, season, language) => {
+    try {
+        const response = await axios(`https://api.themoviedb.org/3/tv/${serieId}/season/${season}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`);
+
+        let episodes = [];
+
+        for (const episode of response.data.episodes) {
+            let team = [];
+
+            for (const member of episode.crew) {
+                team.push({
+                    name: member.original_name,
+                    function: member.job
+                })
+            }
+
+            let starry = [];
+
+            for (const starred of episode.guest_stars) {
+                starry.push({
+                    id: starred.id,
+                    name: starred.original_name,
+                    character: starred.character
+                })
+            }
+
+            episodes.push({
+                id: episode.id,
+                name: episode.name,
+                overview: episode.overview,
+                launchDate: episode.air_date,
+                number: episode.episode_number,
+                team: team.length > 0 ? team : null,
+                starry: starry.length > 0 ? starry : null
+            })
+        }
+
+        return {
+            id: response.data.id,
+            name: response.data.name,
+            overview: response.data.overview != "" ? response.data.overview : null,
+            number: response.data.season_number,
+            premiereDate: response.data.air_date,
+            episodes
+        };
     } catch (error) {
         throw error;
     }

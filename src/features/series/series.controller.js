@@ -18,6 +18,15 @@ exports.seasonsDetails = async (req, res) => {
     }
 }
 
+exports.seasonDetails = async (req, res) => {
+    try {
+        const response = await service.seasonDetails(req.params.serieId, req.params.season, req.params.language);
+        res.send(response)
+    } catch (error) {
+        throw error;
+    }
+}
+
 exports.popular = async (req, res) => {
     try {
         const response = await service.popular(req.params.language);
