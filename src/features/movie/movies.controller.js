@@ -1,46 +1,52 @@
-const service = require('./movies.service');
+const Service = require('./movies.service');
 
-exports.movieDetails = async (req, res) => {
-    try {
-        const response = await service.movieDetails(req.params.movieId, req.params.language);
-        res.send(response)
-    } catch (error) {
-        throw error;
+class Controller extends Service {
+
+    async movieDetails(req, res) {
+        try {
+            const response = await super.movieDetails(req.params.movieId, req.params.language);
+            res.send(response)
+        } catch (error) {
+            throw error;
+        }
     }
+
+    async popular(req, res) {
+        try {
+            const response = await super.popular(req.params.language, req.params.region);
+            res.send(response)
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async trend(req, res) {
+        try {
+            const response = await super.trend(req.params.timeWindow, req.params.language);
+            res.send(response)
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async now(req, res) {
+        try {
+            const response = await super.now(req.params.language, req.params.region);
+            res.send(response)
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async next(req, res) {
+        try {
+            const response = await super.next(req.params.language, req.params.region);
+            res.send(response)
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
-exports.popular = async (req, res) => {
-    try {
-        const response = await service.popular(req.params.language, req.params.region);
-        res.send(response)
-    } catch (error) {
-        throw error;
-    }
-}
-
-exports.trend = async (req, res) => {
-    try {
-        const response = await service.trend(req.params.timeWindow, req.params.language);
-        res.send(response)
-    } catch (error) {
-        throw error;
-    }
-}
-
-exports.now = async (req, res) => {
-    try {
-        const response = await service.now(req.params.language, req.params.region);
-        res.send(response)
-    } catch (error) {
-        throw error;
-    }
-}
-
-exports.next = async (req, res) => {
-    try {
-        const response = await service.next(req.params.language, req.params.region);
-        res.send(response)
-    } catch (error) {
-        throw error;
-    }
-}
+module.exports = Controller;

@@ -1,46 +1,52 @@
-const service = require('./musics.service');
+const Service = require('./musics.service');
 
-exports.albumTracks = async (req, res) => {
-    try {
-        const response = await service.albumTracks(req.params.albumId);
-        res.send(response);
-    } catch (error) {
-        throw error;
+class Controller extends Service {
+
+    async albumTracks(req, res) {
+        try {
+            const response = await super.albumTracks(req.params.albumId);
+            res.send(response);
+        } catch (error) {
+            throw error;
+        }
     }
+
+    async artistDetails(req, res) {
+        try {
+            const response = await super.artistDetails(req.params.artistId);
+            res.send(response);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async artistDiscography(req, res) {
+        try {
+            const response = await super.artistDiscography(req.params.artistId);
+            res.send(response);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async popularTracks(req, res) {
+        try {
+            const response = await super.popularTracks(req.params.chart, req.params.country);
+            res.send(response);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async details(req, res) {
+        try {
+            const response = await super.details(req.params.commonTrackId);
+            res.send(response);
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
-exports.artistDetails = async (req, res) => {
-    try {
-        const response = await service.artistDetails(req.params.artistId);
-        res.send(response);
-    } catch (error) {
-        throw error;
-    }
-}
-
-exports.artistDiscography = async (req, res) => {
-    try {
-        const response = await service.artistDiscography(req.params.artistId);
-        res.send(response);
-    } catch (error) {
-        throw error;
-    }
-}
-
-exports.popularTracks = async (req, res) => {
-    try {
-        const response = await service.popularTracks(req.params.chart, req.params.country);
-        res.send(response);
-    } catch (error) {
-        throw error;
-    }
-}
-
-exports.details = async (req, res) => {
-    try {
-        const response = await service.details(req.params.commonTrackId);
-        res.send(response);
-    } catch (error) {
-        throw error;
-    }
-}
+module.exports = Controller;
