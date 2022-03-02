@@ -49,4 +49,4 @@ class Controller extends Service {
 
 }
 
-module.exports = Controller;
+module.exports = new Controller();

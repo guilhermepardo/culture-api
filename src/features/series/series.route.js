@@ -1,10 +1,7 @@
 const express = require('express');
-const Middleware = require('../../middlewares/logger.middleware')
+const logger = require('../../middlewares/logger.middleware')
 const router = express.Router();
-const Controller = require('./series.controller');
-
-const logger = new Middleware();
-const seriesController = new Controller();
+const seriesController = require('./series.controller');
 
 router.get('/details/:serieId/:language', logger.logger, seriesController.details);
 router.get('/seasons/details/:serieId/:language', logger.logger, seriesController.seasonsDetails);

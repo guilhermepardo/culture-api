@@ -7,4 +7,4 @@ class Middleware {
 
 }
 
-module.exports = Middleware;
+module.exports = new Middleware();
