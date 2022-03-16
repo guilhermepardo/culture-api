@@ -1,13 +1,21 @@
 const express = require('express');
-const app = express();
 const moviesRoutes = require('./features/movie/movies.route');
 const musicsRoutes = require('./features/music/musics.route');
 const seriesRoutes = require('./features/series/series.route');
 
-app.use('/movies', moviesRoutes);
 
-app.use('/musics', musicsRoutes);
+class App {
+    constructor() {
+        this.app = express();
+        this.routes();
+    }
 
-app.use('/series', seriesRoutes);
+    routes() {
+        this.app.use('/movies', moviesRoutes);
+        this.app.use('/musics', musicsRoutes);
+        this.app.use('/series', seriesRoutes);
+    }
 
-module.exports = app;
+}
+
+module.exports = new App().app;
