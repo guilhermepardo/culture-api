@@ -93,7 +93,12 @@ class Service {
             }
             return details;
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 
@@ -163,7 +168,12 @@ class Service {
             }
             return seasons;
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 
@@ -213,12 +223,18 @@ class Service {
                 episodes
             };
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 
     async popular(language) {
         try {
+            console.log("process.env_TMDB_KEY :>>", process.env_TMDB_KEY)
             let seriesList = []
             const response = await axios(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.TMDB_KEY}&language=${language}`)
             for (const item of response.data.results) {
@@ -313,7 +329,12 @@ class Service {
             }
             return seriesList;
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 

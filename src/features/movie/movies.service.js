@@ -46,12 +46,18 @@ class Service {
                 revenue: detailedInfo.data.revenue
             };
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 
     async popular(language, region) {
         try {
+
             let moviesList = [];
 
             const response = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_KEY}&page=1&region=${region}&language=${language}`);
@@ -101,15 +107,12 @@ class Service {
             }
             return moviesList;
         } catch (error) {
-            if (error.response) {
-
                 if (error.response) {
                     throw {
                         _id: 400,
                         message: error.response.data.status_message
                     }
                 }
-            }
         }
     }
 
@@ -164,7 +167,12 @@ class Service {
             }
             return moviesList;
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 
@@ -219,7 +227,12 @@ class Service {
             }
             return moviesList;
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 
@@ -274,7 +287,12 @@ class Service {
             }
             return moviesList;
         } catch (error) {
-            throw error;
+            if (error.response) {
+                throw {
+                    _id: 400,
+                    message: error.response.data.status_message
+                }
+            }
         }
     }
 

@@ -6,7 +6,7 @@ class Controller extends Service{
             const response = await super.details(req.params.serieId, req.params.language);
             res.send(response)
         } catch (error) {
-            throw error;
+            res.status(400).json(error);
         }
     }
 
@@ -16,7 +16,7 @@ class Controller extends Service{
             res.send(response)
         } catch (error) {
             console.log(error)
-            throw error;
+            res.status(400).json(error);
         }
     }
 
@@ -25,7 +25,7 @@ class Controller extends Service{
             const response = await super.seasonDetails(req.params.serieId, req.params.season, req.params.language);
             res.send(response)
         } catch (error) {
-            throw error;
+            res.status(400).json(error);
         }
     }
 
@@ -34,7 +34,7 @@ class Controller extends Service{
             const response = await super.popular(req.params.language);
             res.send(response)
         } catch (error) {
-            throw error;
+            res.status(400).json(error);
         }
     }
 
