@@ -4,9 +4,9 @@ class Service {
 
     async albumTracks(albumId) {
         try {
-            const album = await axios(`https://api.musixmatch.com/ws/1.1/album.get?album_id=${albumId}&apikey=60efb7850b16a8767bab396e224bcb5f`);
+            const album = await axios(`https://api.musixmatch.com/ws/1.1/album.get?album_id=${albumId}&apikey=${process.env.MUSIXMATCH_KEY}`);
             
-            const albumTracks = await axios(`https://api.musixmatch.com/ws/1.1/album.tracks.get?album_id=${albumId}&page=1&page_size=30&apikey=60efb7850b16a8767bab396e224bcb5f`);
+            const albumTracks = await axios(`https://api.musixmatch.com/ws/1.1/album.tracks.get?album_id=${albumId}&page=1&page_size=30&apikey=${process.env.MUSIXMATCH_KEY}`);
 
             let genres = [];
 
@@ -47,7 +47,7 @@ class Service {
 
     async artistDetails(artistId) {
         try {
-            const artist = await axios(`https://api.musixmatch.com/ws/1.1/artist.get?artist_id=${artistId}&apikey=60efb7850b16a8767bab396e224bcb5f`);
+            const artist = await axios(`https://api.musixmatch.com/ws/1.1/artist.get?artist_id=${artistId}&apikey=${process.env.MUSIXMATCH_KEY}`);
 
             let artistCredits = []
 
@@ -80,9 +80,9 @@ class Service {
     async artistDiscography(artistId) {
 
         try {
-            const artist = await axios(`https://api.musixmatch.com/ws/1.1/artist.get?artist_id=${artistId}&apikey=60efb7850b16a8767bab396e224bcb5f`);
+            const artist = await axios(`https://api.musixmatch.com/ws/1.1/artist.get?artist_id=${artistId}&apikey=${process.env.MUSIXMATCH_KEY}`);
 
-            const albums = await axios(`https://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=${artistId}&s_release_date=desc&page_size=100&g_album_name=1&apikey=60efb7850b16a8767bab396e224bcb5f`)
+            const albums = await axios(`https://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=${artistId}&s_release_date=desc&page_size=100&g_album_name=1&apikey=${process.env.MUSIXMATCH_KEY}`)
 
             let albumsList = [];
 
@@ -125,7 +125,7 @@ class Service {
 
             let tracks = [];
 
-            const musics = await axios(`https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=${chart}&page=1&page_size=50&country=${country}&apikey=60efb7850b16a8767bab396e224bcb5f`);
+            const musics = await axios(`https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=${chart}&page=1&page_size=50&country=${country}&apikey=${process.env.MUSIXMATCH_KEY}`);
 
             for (const item of musics.data.message.body.track_list) {
                 let genres = []
@@ -155,7 +155,7 @@ class Service {
 
     async details(commonTrackId) {
         try {
-            const music = await axios(`https://api.musixmatch.com/ws/1.1/track.get?commontrack_id=${commonTrackId}&apikey=60efb7850b16a8767bab396e224bcb5f`);
+            const music = await axios(`https://api.musixmatch.com/ws/1.1/track.get?commontrack_id=${commonTrackId}&apikey=${process.env.MUSIXMATCH_KEY}`);
 
             let genres = []
 

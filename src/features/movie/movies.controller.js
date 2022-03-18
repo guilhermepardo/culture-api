@@ -16,7 +16,7 @@ class Controller extends Service {
             const response = await super.popular(req.params.language, req.params.region);
             res.send(response)
         } catch (error) {
-            throw error;
+            res.status(400).json(error);
         }
     }
 

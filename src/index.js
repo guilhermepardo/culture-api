@@ -1,8 +1,9 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const moviesRoutes = require('./features/movie/movies.route');
 const musicsRoutes = require('./features/music/musics.route');
 const seriesRoutes = require('./features/series/series.route');
-
 
 class App {
     constructor() {

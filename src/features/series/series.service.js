@@ -4,7 +4,7 @@ class Service {
 
     async details(serieId, language) {
         try {
-            const response = await axios(`https://api.themoviedb.org/3/tv/${serieId}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`);
+            const response = await axios(`https://api.themoviedb.org/3/tv/${serieId}?api_key=${process.env.TMDB_KEY}&id=28&language=${language}`);
     
             let creators = [];
     
@@ -99,7 +99,7 @@ class Service {
 
     async seasonsDetails(serieId, language) {
         try {
-            const serieDetails = await axios(`https://api.themoviedb.org/3/tv/${serieId}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`);
+            const serieDetails = await axios(`https://api.themoviedb.org/3/tv/${serieId}?api_key=${process.env.TMDB_KEY}&id=28&language=${language}`);
 
             let seasonsCount = [];
 
@@ -113,7 +113,7 @@ class Service {
 
             for (const seasonNumber of seasonsCount) {
 
-                let seasonsDetails = await axios(`https://api.themoviedb.org/3/tv/${serieId}/season/${seasonNumber}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`)
+                let seasonsDetails = await axios(`https://api.themoviedb.org/3/tv/${serieId}/season/${seasonNumber}?api_key=${process.env.TMDB_KEY}&id=28&language=${language}`)
 
                 seasonsData.push(seasonsDetails.data)
             }
@@ -169,7 +169,7 @@ class Service {
 
     async seasonDetails(serieId, season, language) {
         try {
-            const response = await axios(`https://api.themoviedb.org/3/tv/${serieId}/season/${season}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`);
+            const response = await axios(`https://api.themoviedb.org/3/tv/${serieId}/season/${season}?api_key=${process.env.TMDB_KEY}&id=28&language=${language}`);
     
             let episodes = [];
     
@@ -220,10 +220,10 @@ class Service {
     async popular(language) {
         try {
             let seriesList = []
-            const response = await axios(`https://api.themoviedb.org/3/tv/popular?api_key=cf7258ddce5634737986dcc9aadd195d&language=${language}`)
+            const response = await axios(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.TMDB_KEY}&language=${language}`)
             for (const item of response.data.results) {
     
-                let serieDetails = await axios(`https://api.themoviedb.org/3/tv/${item.id}?api_key=cf7258ddce5634737986dcc9aadd195d&id=28&language=${language}`)
+                let serieDetails = await axios(`https://api.themoviedb.org/3/tv/${item.id}?api_key=${process.env.TMDB_KEY}&id=28&language=${language}`)
     
                 let creators = [];
     
