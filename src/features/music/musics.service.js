@@ -6,6 +6,20 @@ class Service {
         try {
             const album = await axios(`https://api.musixmatch.com/ws/1.1/album.get?album_id=${albumId}&apikey=${process.env.MUSIXMATCH_KEY}`);
             
+            if (album.data.message.header.status_code == 401) {
+                throw {
+                    _id: 401,
+                    message: "Invalid credentials for Musixmatch"
+                }
+            }
+
+            if (album.data.message.header.status_code == 404) {
+                throw {
+                    _id: 404,
+                    message: "Album not found in Musixmatch"
+                }
+            }
+
             const albumTracks = await axios(`https://api.musixmatch.com/ws/1.1/album.tracks.get?album_id=${albumId}&page=1&page_size=30&apikey=${process.env.MUSIXMATCH_KEY}`);
 
             let genres = [];
@@ -49,6 +63,20 @@ class Service {
         try {
             const artist = await axios(`https://api.musixmatch.com/ws/1.1/artist.get?artist_id=${artistId}&apikey=${process.env.MUSIXMATCH_KEY}`);
 
+            if (artist.data.message.header.status_code == 401) {
+                throw {
+                    _id: 401,
+                    message: "Invalid credentials for Musixmatch"
+                }
+            }
+
+            if (artist.data.message.header.status_code == 404) {
+                throw {
+                    _id: 404,
+                    message: "Artist not found in Musixmatch"
+                }
+            }
+
             let artistCredits = []
 
             if (artist.data.message.body.artist.artist_credits.artist_list.length > 0) {
@@ -81,6 +109,20 @@ class Service {
 
         try {
             const artist = await axios(`https://api.musixmatch.com/ws/1.1/artist.get?artist_id=${artistId}&apikey=${process.env.MUSIXMATCH_KEY}`);
+
+            if (artist.data.message.header.status_code == 401) {
+                throw {
+                    _id: 401,
+                    message: "Invalid credentials for Musixmatch"
+                }
+            }
+
+            if (artist.data.message.header.status_code == 404) {
+                throw {
+                    _id: 404,
+                    message: "Artist not found in Musixmatch"
+                }
+            }
 
             const albums = await axios(`https://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=${artistId}&s_release_date=desc&page_size=100&g_album_name=1&apikey=${process.env.MUSIXMATCH_KEY}`)
 
@@ -127,6 +169,13 @@ class Service {
 
             const musics = await axios(`https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=${chart}&page=1&page_size=50&country=${country}&apikey=${process.env.MUSIXMATCH_KEY}`);
 
+            if (musics.data.message.header.status_code == 401) {
+                throw {
+                    _id: 401,
+                    message: "Invalid credentials for Musixmatch"
+                }
+            }
+
             for (const item of musics.data.message.body.track_list) {
                 let genres = []
 
@@ -156,6 +205,20 @@ class Service {
     async details(commonTrackId) {
         try {
             const music = await axios(`https://api.musixmatch.com/ws/1.1/track.get?commontrack_id=${commonTrackId}&apikey=${process.env.MUSIXMATCH_KEY}`);
+
+            if (music.data.message.header.status_code == 401) {
+                throw {
+                    _id: 401,
+                    message: "Invalid credentials for Musixmatch"
+                }
+            }
+
+            if (music.data.message.header.status_code == 404) {
+                throw {
+                    _id: 404,
+                    message: "Track not found in Musixmatch"
+                }
+            }
 
             let genres = []
 

@@ -7,7 +7,7 @@ class Controller extends Service {
             const response = await super.albumTracks(req.params.albumId);
             res.send(response);
         } catch (error) {
-            throw error;
+            res.status(error._id).json(error);
         }
     }
 
@@ -16,7 +16,7 @@ class Controller extends Service {
             const response = await super.artistDetails(req.params.artistId);
             res.send(response);
         } catch (error) {
-            throw error;
+            res.status(error._id).json(error);
         }
     }
 
@@ -25,7 +25,7 @@ class Controller extends Service {
             const response = await super.artistDiscography(req.params.artistId);
             res.send(response);
         } catch (error) {
-            throw error;
+            res.status(error._id).json(error);
         }
     }
 
@@ -34,7 +34,7 @@ class Controller extends Service {
             const response = await super.popularTracks(req.params.chart, req.params.country);
             res.send(response);
         } catch (error) {
-            throw error;
+            res.status(error._id).json(error);
         }
     }
 
@@ -43,7 +43,7 @@ class Controller extends Service {
             const response = await super.details(req.params.commonTrackId);
             res.send(response);
         } catch (error) {
-            throw error;
+            res.status(error._id).json(error);
         }
     }
 
