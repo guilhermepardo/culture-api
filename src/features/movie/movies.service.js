@@ -48,7 +48,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                    _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -109,7 +109,7 @@ class Service {
         } catch (error) {
                 if (error.response) {
                     throw {
-                        _id: 400,
+                        _id: error.response.status,
                         message: error.response.data.status_message
                     }
                 }
@@ -169,7 +169,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                    _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -229,7 +229,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                    _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -289,7 +289,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                    _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }

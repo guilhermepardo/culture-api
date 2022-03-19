@@ -95,7 +95,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                     _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -170,7 +170,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                     _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -225,7 +225,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                     _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -234,7 +234,6 @@ class Service {
 
     async popular(language) {
         try {
-            console.log("process.env_TMDB_KEY :>>", process.env_TMDB_KEY)
             let seriesList = []
             const response = await axios(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.TMDB_KEY}&language=${language}`)
             for (const item of response.data.results) {
@@ -331,7 +330,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                    _id: 400,
+                     _id: error.response.status,
                     message: error.response.data.status_message
                 }
             }
