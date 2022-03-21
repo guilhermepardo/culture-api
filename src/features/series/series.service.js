@@ -95,7 +95,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                     _id: error.response.status,
+                     statusCode: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -170,7 +170,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                     _id: error.response.status,
+                     statusCode: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -225,7 +225,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                     _id: error.response.status,
+                     statusCode: error.response.status,
                     message: error.response.data.status_message
                 }
             }
@@ -330,7 +330,7 @@ class Service {
         } catch (error) {
             if (error.response) {
                 throw {
-                     _id: error.response.status,
+                     statusCode: error.response.status,
                     message: error.response.data.status_message
                 }
             }

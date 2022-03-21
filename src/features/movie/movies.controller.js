@@ -7,7 +7,7 @@ class Controller extends Service {
             const response = await super.movieDetails(req.params.movieId, req.params.language);
             res.send(response)
         } catch (error) {
-            res.status(error._id).json(error);
+            res.status(error.statusCode).json(error);
         }
     }
 
@@ -16,7 +16,7 @@ class Controller extends Service {
             const response = await super.popular(req.params.language, req.params.region);
             res.send(response)
         } catch (error) {
-            res.status(error._id).json(error);
+            res.status(error.statusCode).json(error);
         }
     }
 
@@ -25,7 +25,7 @@ class Controller extends Service {
             const response = await super.trend(req.params.timeWindow, req.params.language);
             res.send(response)
         } catch (error) {
-            res.status(error._id).json(error);
+            res.status(error.statusCode).json(error);
         }
     }
 
@@ -34,7 +34,7 @@ class Controller extends Service {
             const response = await super.now(req.params.language, req.params.region);
             res.send(response)
         } catch (error) {
-            res.status(error._id).json(error);
+            res.status(error.statusCode).json(error);
         }
     }
 
@@ -43,7 +43,7 @@ class Controller extends Service {
             const response = await super.next(req.params.language, req.params.region);
             res.send(response)
         } catch (error) {
-            res.status(error._id).json(error);
+            res.status(error.statusCode).json(error);
         }
     }
 

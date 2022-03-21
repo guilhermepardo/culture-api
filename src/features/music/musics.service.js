@@ -8,14 +8,14 @@ class Service {
             
             if (album.data.message.header.status_code == 401) {
                 throw {
-                    _id: 401,
+                    statusCode: 401,
                     message: "Invalid credentials for Musixmatch"
                 }
             }
 
             if (album.data.message.header.status_code == 404) {
                 throw {
-                    _id: 404,
+                    statusCode: 404,
                     message: "Album not found in Musixmatch"
                 }
             }
@@ -65,14 +65,14 @@ class Service {
 
             if (artist.data.message.header.status_code == 401) {
                 throw {
-                    _id: 401,
+                    statusCode: 401,
                     message: "Invalid credentials for Musixmatch"
                 }
             }
 
             if (artist.data.message.header.status_code == 404) {
                 throw {
-                    _id: 404,
+                    statusCode: 404,
                     message: "Artist not found in Musixmatch"
                 }
             }
@@ -112,14 +112,14 @@ class Service {
 
             if (artist.data.message.header.status_code == 401) {
                 throw {
-                    _id: 401,
+                    statusCode: 401,
                     message: "Invalid credentials for Musixmatch"
                 }
             }
 
             if (artist.data.message.header.status_code == 404) {
                 throw {
-                    _id: 404,
+                    statusCode: 404,
                     message: "Artist not found in Musixmatch"
                 }
             }
@@ -171,7 +171,7 @@ class Service {
 
             if (musics.data.message.header.status_code == 401) {
                 throw {
-                    _id: 401,
+                    statusCode: 401,
                     message: "Invalid credentials for Musixmatch"
                 }
             }
@@ -208,14 +208,14 @@ class Service {
 
             if (music.data.message.header.status_code == 401) {
                 throw {
-                    _id: 401,
+                    statusCode: 401,
                     message: "Invalid credentials for Musixmatch"
                 }
             }
 
             if (music.data.message.header.status_code == 404) {
                 throw {
-                    _id: 404,
+                    statusCode: 404,
                     message: "Track not found in Musixmatch"
                 }
             }
