@@ -7,4 +7,32 @@ const endpointFiles = [
     './src/features/music/musics.route.js'
 ];
 
-swaggerAutogen(outputFile, endpointFiles);
+const docs = {
+    info: {
+        version: "1.0.0",
+        title: "Culture API",
+        description: "Get movies, series or musics data."
+    },
+    host: "localhost:3000",
+    basePath: "/",
+    schemes: ['http', 'https'],
+    consumes: ['application/json'],
+    produces: ['application/json'],
+    tags: [
+        {
+            "name": "Movies",
+            "description": "Movies endpoints"
+        },
+        {
+            "name": "Series",
+            "description": "Series endpoints"
+        },
+        {
+            "name": "Musics",
+            "description": "Musics endpoints"
+        },
+    ],
+
+};
+
+swaggerAutogen(outputFile, endpointFiles, docs);

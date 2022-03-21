@@ -2,30 +2,56 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "REST API",
-    "description": ""
+    "title": "Culture API",
+    "description": "Get movies, series or musics data."
   },
   "host": "localhost:3000",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "Movies",
+      "description": "Movies endpoints"
+    },
+    {
+      "name": "Series",
+      "description": "Series endpoints"
+    },
+    {
+      "name": "Musics",
+      "description": "Musics endpoints"
+    }
+  ],
   "schemes": [
-    "http"
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
   ],
   "paths": {
-    "/movieDetails/{movieId}/{language}": {
+    "/movies/movieDetails/{movieId}/{language}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Movies"
+        ],
+        "description": "Get details from a movie",
         "parameters": [
           {
             "name": "movieId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Movie id"
           },
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           }
         ],
         "responses": {
@@ -35,21 +61,26 @@
         }
       }
     },
-    "/popular/{language}/{region}": {
+    "/movies/popular/{language}/{region}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Movies"
+        ],
+        "description": "Get popular movies per region",
         "parameters": [
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           },
           {
             "name": "region",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Region. Set a value in ISO 3166-1 in uppercase (BR, US)"
           }
         ],
         "responses": {
@@ -59,21 +90,26 @@
         }
       }
     },
-    "/trend/{timeWindow}/{language}": {
+    "/movies/trend/{timeWindow}/{language}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Movies"
+        ],
+        "description": "Get trending movies per week or day",
         "parameters": [
           {
             "name": "timeWindow",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Set day or week"
           },
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           }
         ],
         "responses": {
@@ -83,45 +119,26 @@
         }
       }
     },
-    "/theaters/now/{language}/{region}": {
+    "/movies/theaters/now/{language}/{region}": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "language",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "region",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
+        "tags": [
+          "Movies"
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/theaters/next/{language}/{region}": {
-      "get": {
-        "description": "",
+        "description": "Get movies in theaters per region",
         "parameters": [
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           },
           {
             "name": "region",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Region. Set a value in ISO 3166-1 in uppercase (BR, US)"
           }
         ],
         "responses": {
@@ -131,21 +148,55 @@
         }
       }
     },
-    "/details/{serieId}/{language}": {
+    "/movies/theaters/next/{language}/{region}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Movies"
+        ],
+        "description": "Get next movies in theaters per region",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
+          },
+          {
+            "name": "region",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Region. Set a value in ISO 3166-1 in uppercase (BR, US)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/series/details/{serieId}/{language}": {
+      "get": {
+        "tags": [
+          "Series"
+        ],
+        "description": "Get details from a serie",
         "parameters": [
           {
             "name": "serieId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Serie id"
           },
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           }
         ],
         "responses": {
@@ -155,21 +206,26 @@
         }
       }
     },
-    "/seasons/details/{serieId}/{language}": {
+    "/series/seasons/details/{serieId}/{language}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Series"
+        ],
+        "description": "Get all season details from a serie",
         "parameters": [
           {
             "name": "serieId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Serie id"
           },
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           }
         ],
         "responses": {
@@ -179,27 +235,33 @@
         }
       }
     },
-    "/season/details/{serieId}/{season}/{language}": {
+    "/series/season/details/{serieId}/{season}/{language}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Series"
+        ],
+        "description": "Get a season details from a serie",
         "parameters": [
           {
             "name": "serieId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Serie id"
           },
           {
             "name": "season",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Season number"
           },
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           }
         ],
         "responses": {
@@ -209,15 +271,19 @@
         }
       }
     },
-    "/popular/{language}": {
+    "/series/popular/{language}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Series"
+        ],
+        "description": "Get popular series",
         "parameters": [
           {
             "name": "language",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Language to translate response. Set a value in ISO 639-1 format (en-US, pt-BR)"
           }
         ],
         "responses": {
@@ -227,15 +293,19 @@
         }
       }
     },
-    "/album/tracks/{albumId}": {
+    "/musics/album/tracks/{albumId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Musics"
+        ],
+        "description": "Get all tracks from an album",
         "parameters": [
           {
             "name": "albumId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Album id"
           }
         ],
         "responses": {
@@ -245,15 +315,19 @@
         }
       }
     },
-    "/artist/details/{artistId}": {
+    "/musics/artist/details/{artistId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Musics"
+        ],
+        "description": "Get details from an artist",
         "parameters": [
           {
             "name": "artistId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Artist id"
           }
         ],
         "responses": {
@@ -263,15 +337,19 @@
         }
       }
     },
-    "/artist/discography/{artistId}": {
+    "/musics/artist/discography/{artistId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Musics"
+        ],
+        "description": "Get an artist discography",
         "parameters": [
           {
             "name": "artistId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Artist id"
           }
         ],
         "responses": {
@@ -281,21 +359,26 @@
         }
       }
     },
-    "/tracks/popular/{chart}/{country}": {
+    "/musics/tracks/popular/{chart}/{country}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Musics"
+        ],
+        "description": "Get popular tracks per chart and country",
         "parameters": [
           {
             "name": "chart",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Set hot or top"
           },
           {
             "name": "country",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Country. Set a value in ISO 3166-1 in uppercase (BR, US). Set XW for worldwide"
           }
         ],
         "responses": {
@@ -305,15 +388,19 @@
         }
       }
     },
-    "/tracks/details/{commonTrackId}": {
+    "/musics/tracks/details/{commonTrackId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Musics"
+        ],
+        "description": "Get an track details",
         "parameters": [
           {
             "name": "commonTrackId",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Common track id"
           }
         ],
         "responses": {
