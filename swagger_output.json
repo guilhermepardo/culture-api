@@ -252,6 +252,9 @@
         ],
         "responses": {
           "200": {
+            "schema": {
+              "$ref": "#/definitions/serieDetails"
+            },
             "description": "OK"
           },
           "401": {
@@ -375,6 +378,9 @@
         ],
         "responses": {
           "200": {
+            "schema": {
+              "$ref": "#/definitions/popularSeries"
+            },
             "description": "OK"
           },
           "401": {
@@ -1070,6 +1076,377 @@
           "example": "Track not found in Musixmatch"
         }
       }
+    },
+    "popularSeries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "serieId": {
+            "type": "number",
+            "example": 85552
+          },
+          "originalName": {
+            "type": "string",
+            "example": "Euphoria"
+          },
+          "name": {
+            "type": "string",
+            "example": "Euphoria"
+          },
+          "overview": {
+            "type": "string",
+            "example": "Um grupo de estudantes do ensino médio lida com diferentes situações típicas da idade como busca pela identidade, traumas, comportamento nas redes sociais e amizade."
+          },
+          "premiereDate": {
+            "type": "string",
+            "example": "2019-06-16"
+          },
+          "inProduction": {
+            "type": "boolean",
+            "example": true
+          },
+          "creators": {
+            "type": "array",
+            "example": [
+              "Sam Levinson"
+            ]
+          },
+          "genres": {
+            "type": "array",
+            "example": [
+              "Drama"
+            ]
+          },
+          "adult": {
+            "type": "boolean",
+            "example": true
+          },
+          "popularity": {
+            "type": "number",
+            "example": 1670.583
+          },
+          "seasonsNumber": {
+            "type": "number",
+            "example": 2
+          },
+          "episodesNumber": {
+            "type": "number",
+            "example": 2
+          },
+          "episodesRuntime": {
+            "type": "array",
+            "example": [
+              60
+            ]
+          },
+          "seasons": {
+            "type": "array",
+            "example": [
+              {
+                "id": 166250,
+                "name": "Especiais",
+                "number": 0,
+                "episodesCount": 2,
+                "premiereDate": "2020-12-06"
+              },
+              {
+                "id": 115613,
+                "name": "Temporada 1",
+                "number": 1,
+                "episodesCount": 8,
+                "premiereDate": "2019-06-16"
+              },
+              {
+                "id": 220804,
+                "name": "Temporada 2",
+                "number": 2,
+                "episodesCount": 8,
+                "premiereDate": "2022-01-09"
+              }
+            ]
+          },
+          "lastEpisode": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 3480500
+              },
+              "date": {
+                "type": "string",
+                "example": "2022-02-27"
+              },
+              "number": {
+                "type": "number",
+                "example": 8
+              },
+              "seasonNumber": {
+                "type": "number",
+                "example": 8
+              },
+              "name": {
+                "type": "string",
+                "example": "All My Life, My Hearth Has Yearned for a Thing I Cannot Name"
+              },
+              "overview": {
+                "type": "string",
+                "example": "Conforme o espetáculo continua, fragmentos de memórias colidem com o presente e o futuro."
+              }
+            }
+          },
+          "nextEpisode": {
+            "type": "object",
+            "example": null
+          },
+          "country": {
+            "type": "array",
+            "example": [
+              "US"
+            ]
+          },
+          "spokenLanguages": {
+            "type": "array",
+            "example": [
+              "English"
+            ]
+          },
+          "networks": {
+            "type": "array",
+            "example": [
+              "HBO"
+            ]
+          },
+          "productionCompanies": {
+            "type": "array",
+            "example": [
+              "A24",
+              "The Reasonable Bunch",
+              "Little Lamb Productions",
+              "DreamCrew"
+            ]
+          },
+          "productionCountries": {
+            "type": "array",
+            "example": [
+              "United States of America"
+            ]
+          }
+        }
+      }
+    },
+    "serieDetails": {
+      "type": "object",
+      "properties": {
+        "serieId": {
+          "type": "number",
+          "example": 60574
+        },
+        "originalName": {
+          "type": "string",
+          "example": "Peaky Blinders"
+        },
+        "name": {
+          "type": "string",
+          "example": "Peaky Blinders"
+        },
+        "overview": {
+          "type": "string",
+          "example": "A gangster family epic set in 1919 Birmingham, England and centered on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby, who means to move up in the world."
+        },
+        "premiereDate": {
+          "type": "string",
+          "example": "2013-09-12"
+        },
+        "inProduction": {
+          "type": "boolean",
+          "example": true
+        },
+        "creators": {
+          "type": "array",
+          "example": [
+            "Steven Knight"
+          ]
+        },
+        "genres": {
+          "type": "array",
+          "example": [
+            "Drama",
+            "Crime"
+          ]
+        },
+        "adult": {
+          "type": "boolean",
+          "example": false
+        },
+        "popularity": {
+          "type": "number",
+          "example": 1571.12
+        },
+        "seasonsNumber": {
+          "type": "number",
+          "example": 6
+        },
+        "episodesNumber": {
+          "type": "number",
+          "example": 36
+        },
+        "episodeRuntime": {
+          "type": "array",
+          "example": [
+            60,
+            58
+          ]
+        },
+        "seasons": {
+          "type": "array",
+          "example": [
+            {
+              "id": 178069,
+              "name": "Specials",
+              "number": 0,
+              "episodesCount": 17,
+              "premiereDate": null
+            },
+            {
+              "id": 59914,
+              "name": "Series 1",
+              "number": 1,
+              "episodesCount": 6,
+              "premiereDate": "2013-09-12"
+            },
+            {
+              "id": 62804,
+              "name": "Series 2",
+              "number": 2,
+              "episodesCount": 6,
+              "premiereDate": "2014-10-02"
+            },
+            {
+              "id": 72707,
+              "name": "Series 3",
+              "number": 3,
+              "episodesCount": 6,
+              "premiereDate": "2016-05-05"
+            },
+            {
+              "id": 94653,
+              "name": "Series 4",
+              "number": 4,
+              "episodesCount": 6,
+              "premiereDate": "2017-11-15"
+            },
+            {
+              "id": 129442,
+              "name": "Series 5",
+              "number": 5,
+              "episodesCount": 6,
+              "premiereDate": "2019-08-25"
+            },
+            {
+              "id": 217806,
+              "name": "Series 6",
+              "number": 6,
+              "episodesCount": 6,
+              "premiereDate": "2022-02-27"
+            }
+          ]
+        },
+        "lastEpisode": {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 3585879
+              },
+              "date": {
+                "type": "string",
+                "example": "2022-03-20"
+              },
+              "number": {
+                "type": "number",
+                "example": 4
+              },
+              "seasonNumber": {
+                "type": "number",
+                "example": 6
+              },
+              "name": {
+                "type": "string",
+                "example": "Sapphire"
+              },
+              "overview": {
+                "type": "string",
+                "example": "Tommy establishes a connection between crime and political power that could alter the course of history. He also receives life-changing news from an unexpected source."
+              }
+            }
+          }
+        },
+        "nextEpisode": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "example": 3600236
+            },
+            "date": {
+              "type": "string",
+              "example": "2022-03-27"
+            },
+            "number": {
+              "type": "number",
+              "example": 5
+            },
+            "seasonNumber": {
+              "type": "number",
+              "example": 6
+            },
+            "name": {
+              "type": "string",
+              "example": "The Road to Hell"
+            },
+            "overview": {
+              "type": "string",
+              "example": "In the light of extraordinary personal revelations, Tommy takes a course of action that will change everything. Meanwhile, his enemies’ plans start to fall into place."
+            }
+          }
+        },
+        "country": {
+          "type": "array",
+          "example": [
+            "GB"
+          ]
+        },
+        "spokenLanguages": {
+          "type": "array",
+          "example": [
+            "English"
+          ]
+        },
+        "networks": {
+          "type": "array",
+          "example": [
+            "BBC One",
+            "BBC Two"
+          ]
+        },
+        "productionCompanies": {
+          "type": "array",
+          "example": [
+            "Tiger Aspect Productions",
+            "BBC Studios",
+            "Caryn Mandabach Productions",
+            "Screen Yorkshire"
+          ]
+        },
+        "productionCountries": {
+          "type": "array",
+          "example": [
+            "United Kingdom"
+          ]
+        }
+      }
     }
-  }
+}
 }
