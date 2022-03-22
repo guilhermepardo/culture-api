@@ -62,9 +62,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/tmdbNotFound"
+            },
             "description": "Movie not found"
           }
         }
@@ -100,6 +106,9 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           }
         }
@@ -135,6 +144,9 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           }
         }
@@ -170,6 +182,9 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           }
         }
@@ -205,6 +220,9 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           }
         }
@@ -237,9 +255,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/tmdbNotFound"
+            },
             "description": "Serie not found"
           }
         }
@@ -272,9 +296,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/tmdbNotFound"
+            },
             "description": "Serie not found"
           }
         }
@@ -314,9 +344,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/tmdbNotFound"
+            },
             "description": "Serie not found"
           }
         }
@@ -342,6 +378,9 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/tmdbCredentialError"
+            },
             "description": "Invalid credentials"
           }
         }
@@ -367,9 +406,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchInvalidCredentials"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchAlbumNotFound"
+            },
             "description": "Album not found"
           }
         }
@@ -395,9 +440,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchInvalidCredentials"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchArtistNotFound"
+            },
             "description": "Artist not found"
           }
         }
@@ -423,9 +474,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchInvalidCredentials"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchArtistNotFound"
+            },
             "description": "Artist not found"
           }
         }
@@ -458,6 +515,9 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchInvalidCredentials"
+            },
             "description": "Invalid credentials"
           }
         }
@@ -483,9 +543,15 @@
             "description": "OK"
           },
           "401": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchInvalidCredentials"
+            },
             "description": "Invalid credentials"
           },
           "404": {
+            "schema": {
+              "$ref": "#/definitions/musixmatchTrackNotFound"
+            },
             "description": "Track not found"
           }
         }
@@ -924,6 +990,84 @@
             "type": "number",
             "example": 0
           }
+        }
+      }
+    },
+    "tmdbCredentialError": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "number",
+          "example": 401
+        },
+        "message": {
+          "type": "string",
+          "example": "Invalid API key: You must be granted a valid key."
+        }
+      }
+    },
+    "tmdbNotFound": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "number",
+          "example": 404
+        },
+        "message": {
+          "type": "string",
+          "example": "The resource you requested could not be found."
+        }
+      }
+    },
+    "musixmatchInvalidCredentials": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "number",
+          "example": 401
+        },
+        "message": {
+          "type": "string",
+          "example": "Invalid credentials for Musixmatch"
+        }
+      }
+    },
+    "musixmatchAlbumNotFound": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "number",
+          "example": 404
+        },
+        "message": {
+          "type": "string",
+          "example": "Album not found in Musixmatch"
+        }
+      }
+    },
+    "musixmatchArtistNotFound": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "number",
+          "example": 404
+        },
+        "message": {
+          "type": "string",
+          "example": "Artist not found in Musixmatch"
+        }
+      }
+    },
+    "musixmatchTrackNotFound": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "number",
+          "example": 404
+        },
+        "message": {
+          "type": "string",
+          "example": "Track not found in Musixmatch"
         }
       }
     }
