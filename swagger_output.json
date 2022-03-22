@@ -56,7 +56,16 @@
         ],
         "responses": {
           "200": {
+            "schema": {
+              "$ref": "#/definitions/movie"
+            },
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Movie not found"
           }
         }
       }
@@ -85,7 +94,13 @@
         ],
         "responses": {
           "200": {
+            "schema": {
+              "$ref": "#/definitions/popularMovies"
+            },
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
           }
         }
       }
@@ -114,7 +129,13 @@
         ],
         "responses": {
           "200": {
+            "schema": {
+              "$ref": "#/definitions/trendingMovies"
+            },
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
           }
         }
       }
@@ -143,7 +164,13 @@
         ],
         "responses": {
           "200": {
+            "schema": {
+              "$ref": "#/definitions/nowInTheaterMovies"
+            },
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
           }
         }
       }
@@ -172,7 +199,13 @@
         ],
         "responses": {
           "200": {
+            "schema": {
+              "$ref": "#/definitions/nextInTheaterMovies"
+            },
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
           }
         }
       }
@@ -202,6 +235,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Serie not found"
           }
         }
       }
@@ -231,6 +270,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Serie not found"
           }
         }
       }
@@ -267,6 +312,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Serie not found"
           }
         }
       }
@@ -289,6 +340,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
           }
         }
       }
@@ -311,6 +365,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Album not found"
           }
         }
       }
@@ -333,6 +393,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Artist not found"
           }
         }
       }
@@ -355,6 +421,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Artist not found"
           }
         }
       }
@@ -384,6 +456,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
           }
         }
       }
@@ -406,6 +481,448 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "Track not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "movie": {
+      "type": "object",
+      "properties": {
+        "movieId": {
+          "type": "number",
+          "example": 634649
+        },
+        "imdbId": {
+          "type": "string",
+          "example": "tt10872600"
+        },
+        "title": {
+          "type": "string",
+          "example": "Spider-Man: No Way Home"
+        },
+        "originalTitle": {
+          "type": "string",
+          "example": "Spider-Man: No Way Home"
+        },
+        "overview": {
+          "type": "string",
+          "example": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
+        },
+        "genres": {
+          "type": "array",
+          "example": [
+            "Action",
+            "Adventure",
+            "Science Fiction"
+          ]
+        },
+        "released": {
+          "type": "boolean",
+          "example": true
+        },
+        "releaseDate": {
+          "type": "string",
+          "example": "2021-12-15"
+        },
+        "runtime": {
+          "type": "number",
+          "example": 148
+        },
+        "adult": {
+          "type": "boolean",
+          "example": false
+        },
+        "tagline": {
+          "type": "string",
+          "example": "The Multiverse unleashed"
+        },
+        "productionCountries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "example": "United States of America"
+              }
+            }
+          }
+        },
+        "productionCompanies": {
+          "type": "array",
+          "example": [
+            "Marvel Studios",
+            "Pascal Pictures",
+            "Columbia Pictures"
+          ]
+        },
+        "budget": {
+          "type": "number",
+          "example": 200000000
+        },
+        "revenue": {
+          "type": "number",
+          "example": 1876685954
+        }
+      }
+    },
+    "popularMovies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "movieId": {
+            "type": "number",
+            "example": 508947
+          },
+          "imdbId": {
+            "type": "string",
+            "example": "tt8097030"
+          },
+          "title": {
+            "type": "string",
+            "example": "Red: Crescer é Uma Fera"
+          },
+          "originalTitle": {
+            "type": "string",
+            "example": "Turning Red"
+          },
+          "overview": {
+            "type": "string",
+            "example": "Mei, de treze anos, está experimentando a estranheza de ser uma adolescente com uma reviravolta – quando ela fica muito animada, ela se transforma em um panda vermelho gigante."
+          },
+          "genres": {
+            "type": "array",
+            "example": [
+              "Animação",
+              "Família",
+              "Comédia",
+              "Fantasia"
+            ]
+          },
+          "released": {
+            "type": "boolean",
+            "example": true
+          },
+          "releaseDate": {
+            "type": "string",
+            "example": "2022-03-11"
+          },
+          "runtime": {
+            "type": "number",
+            "example": 100
+          },
+          "adult": {
+            "type": "boolean",
+            "example": false
+          },
+          "tagline": {
+            "type": "string",
+            "example": ""
+          },
+          "productionCountries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "prefix": {
+                  "type": "string",
+                  "example": "US"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "United States of America"
+                }
+              }
+            }
+          },
+          "productionCompanies": {
+            "type": "array",
+            "example": [
+              "Walt Disney Pictures",
+              "Pixar"
+            ]
+          },
+          "budget": {
+            "type": "number",
+            "example": 190000000
+          },
+          "revenue": {
+            "type": "number",
+            "example": 0
+          }
+        }
+      }
+    },
+    "trendingMovies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "movieId": {
+            "type": "number",
+            "example": 414906
+          },
+          "imdbId": {
+            "type": "string",
+            "example": "tt1877830"
+          },
+          "title": {
+            "type": "string",
+            "example": "The Batman"
+          },
+          "originalTitle": {
+            "type": "string",
+            "example": "The Batman"
+          },
+          "overview": {
+            "type": "string",
+            "example": "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler."
+          },
+          "genres": {
+            "type": "array",
+            "example": [
+              "Crime",
+              "Mystery",
+              "Thriller"
+            ]
+          },
+          "released": {
+            "type": "boolean",
+            "example": true
+          },
+          "releaseDate": {
+            "type": "string",
+            "example": "2022-03-01"
+          },
+          "runtime": {
+            "type": "number",
+            "example": 176
+          },
+          "adult": {
+            "type": "boolean",
+            "example": false
+          },
+          "tagline": {
+            "type": "string",
+            "example": "Unmask the truth."
+          },
+          "productionCountries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "prefix": {
+                  "type": "string",
+                  "example": "US"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "United States of America"
+                }
+              }
+            }
+          },
+          "productionCompanies": {
+            "type": "array",
+            "example": [
+              "6th & Idaho",
+              "Dylan Clark Productions",
+              "DC Films",
+              "Warner Bros. Pictures"
+            ]
+          },
+          "budget": {
+            "type": "number",
+            "example": 185000000
+          },
+          "revenue": {
+            "type": "number",
+            "example": 600500000
+          }
+        }
+      }
+    },
+    "nowInTheaterMovies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "movieId": {
+            "type": "number",
+            "example": 629542
+          },
+          "imdbId": {
+            "type": "string",
+            "example": "tt8115900"
+          },
+          "title": {
+            "type": "string",
+            "example": "Os Caras Malvados"
+          },
+          "originalTitle": {
+            "type": "string",
+            "example": "The Bad Guys"
+          },
+          "overview": {
+            "type": "string",
+            "example": "Nunca houve cinco amigos tão infames quanto Os Caras Malvados – o arrojado batedor de carteiras Sr. Wolf, o arrombador de cofres Mr. Snake, o mestre do disfarce do frio Sr. Shark, o “músculo” curto do Sr. Piranha e a especialista em hacker de língua afiada Sra. Tarantula, também conhecido como “Webs”."
+          },
+          "genres": {
+            "type": "array",
+            "example": [
+              "Animação",
+              "Comédia",
+              "Ação",
+              "Família",
+              "Crime"
+            ]
+          },
+          "released": {
+            "type": "boolean",
+            "example": true
+          },
+          "releaseDate": {
+            "type": "string",
+            "example": "2022-03-17"
+          },
+          "runtime": {
+            "type": "number",
+            "example": 100
+          },
+          "adult": {
+            "type": "boolean",
+            "example": false
+          },
+          "tagline": {
+            "type": "string",
+            "example": "Ser legal não está com nada."
+          },
+          "productionCountries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "prefix": {
+                  "type": "string",
+                  "example": "US"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "United States of America"
+                }
+              }
+            }
+          },
+          "productionCompanies": {
+            "type": "array",
+            "example": [
+              "DreamWorks Animation",
+              "Universal Pictures"
+            ]
+          },
+          "budget": {
+            "type": "number",
+            "example": 0
+          },
+          "revenue": {
+            "type": "number",
+            "example": 0
+          }
+        }
+      }
+    },
+    "nextInTheaterMovies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "movieId": {
+            "type": "number",
+            "example": 675353
+          },
+          "imdbId": {
+            "type": "string",
+            "example": "tt12412888"
+          },
+          "title": {
+            "type": "string",
+            "example": "Sonic the Hedgehog 2"
+          },
+          "originalTitle": {
+            "type": "string",
+            "example": "Sonic the Hedgehog 2"
+          },
+          "overview": {
+            "type": "string",
+            "example": "After settling in Green Hills, Sonic is eager to prove he has what it takes to be a true hero. His test comes when Dr. Robotnik returns, this time with a new partner, Knuckles, in search for an emerald that has the power to destroy civilizations. Sonic teams up with his own sidekick, Tails, and together they embark on a globe-trotting journey to find the emerald before it falls into the wrong hands."
+          },
+          "genres": {
+            "type": "array",
+            "example": [
+              "Action",
+              "Science Fiction",
+              "Comedy",
+              "Family"
+            ]
+          },
+          "released": {
+            "type": "boolean",
+            "example": false
+          },
+          "releaseDate": {
+            "type": "string",
+            "example": "2022-04-08"
+          },
+          "runtime": {
+            "type": "number",
+            "example": 110
+          },
+          "adult": {
+            "type": "boolean",
+            "example": false
+          },
+          "tagline": {
+            "type": "string",
+            "example": "Welcome to the next level."
+          },
+          "productionCountries": {
+            "type": "array",
+            "example": [
+              {
+                "prefix": "JP",
+                "name": "Japan"
+              },
+              {
+                "prefix": "US",
+                "name": "United States of America"
+              }
+            ]
+          },
+          "productionCompanies": {
+            "type": "array",
+            "example": [
+              "SEGA",
+              "Original Film",
+              "Blur Studios",
+              "Marza Animation Planet"
+            ]
+          },
+          "budget": {
+            "type": "number",
+            "example": 0
+          },
+          "revenue": {
+            "type": "number",
+            "example": 0
           }
         }
       }
